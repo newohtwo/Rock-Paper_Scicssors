@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  
+  <script>
+
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
+      function computerPlay(){
+        let RndomNum = getRandomInt(3);
+        switch(RndomNum){
+            case 0:
+                return`rock`;
+            break;
+            case 1:
+                return`paper`;
+            break;
+            case 2:
+                return`scissors`;
+            break;
+        }
+    }
+
+
+
+
+    function RPSRound(UserSelection , PCSelection){
+
+       if(UserSelection == "rock"){
+        switch(PCSelection){
+            case "rock":
+                return 0;
+            break;
+            case "paper":
+                return 2;
+            break;
+            case "scissors":
+                return 1;
+            break;
+        }
+       }
+
+       if(UserSelection == "paper"){
+        switch(PCSelection){
+            case "rock":
+                return 1;
+            break;
+            case "paper":
+                return 0;
+            break;
+            case "scissors":
+                return 2;
+            break;
+        } 
+       }
+
+       if(UserSelection == "scissors"){
+        switch(PCSelection){
+            case "rock":
+                return 2;
+            break;
+            case "paper":
+                return 1;
+            break;
+            case "scissors":
+                return 0;
+            break;
+        }
+       }
+
+       
+        
+        
+    }  
+    
+    
+    let userP ,pcP ,score = 0 , i;
+    
+    
+
+    for(i = 0 ; i < 5; i++){
+        userP = prompt("choose your play: rock , paper , scissors");
+        userP = userP.toLocaleLowerCase();
+
+        //check for valid input
+        if(userP != "rock" && userP != "paper" && userP != "scissors" ){
+        alert("wrong input exiting game")
+            break;
+        }
+
+        pcP = computerPlay();
+
+        //score saving
+        if(RPSRound(userP,pcP) == 1){
+            score++;
+            alert("you won score: " + score + " pc choice " + pcP);
+        }else if(RPSRound(userP,pcP) == 2){
+            score--;
+            alert("you lost pc choice: " + pcP + " score is: " + score);
+        }else
+        alert("its a tie " + score + " pc choice " + pcP);
+
+
+
+    }
+
+    if(score > 0){
+        console.log("you win your score" + score);
+    }else if(score < 0)
+    console.log("you lose your score" + score);
+    else
+    console.log("its a tie");
+
+  </script>
+
+</body>
+</html>
